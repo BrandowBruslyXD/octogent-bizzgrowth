@@ -1,0 +1,49 @@
+# ─── Sistema operativo ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ─── Configuración local del operador / herramientas ───────────────
+# Config personal de Claude Code, ruflo y claude-flow. No se sube al
+# repo porque incluye memoria, llaves locales y rutas absolutas del
+# operador que clonó el proyecto.
+.claude/
+.claude-flow/
+.agents/
+.swarm/
+.codex/
+.mcp.json
+data/memory
+ruvector.db
+
+# ─── Estado local del usuario de la app ────────────────────────────
+# Octogent guarda en .octogent/ los tentáculos, transcripts, worktrees
+# y los archivos del flujo del consultor. Cada operador genera el suyo
+# y nunca debe versionarse.
+.octogent/
+**/.octogent/
+
+# ─── Build outputs ─────────────────────────────────────────────────
+node_modules/
+**/node_modules/
+dist/
+**/dist/
+**/.vite/
+**/coverage/
+*.tsbuildinfo
+
+# ─── Logs y temporales ─────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ─── Variables de entorno ──────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Playwright (artefactos de tests E2E) ──────────────────────────
+playwright-report/
+test-results/

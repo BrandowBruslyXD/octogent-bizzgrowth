@@ -1,0 +1,58 @@
+/* Modo Consultor BizzGrowth: cada tentáculo consultor-* funciona como una
+   tool del agente. Tres estados visuales:
+   - idle:    sin archivo de output → grayscale, atenuado.
+   - done:    archivo presente pero sin cambios recientes → color sólido,
+              sin animación. Indica fase completada.
+   - current: archivo recién escrito (ventana 30s) y es el más reciente →
+              pulse + glow fuerte. Indica fase corriendo AHORA. Solo uno
+              puede estar current a la vez. */
+
+.octopus-node--consultor {
+  will-change: filter;
+  transition: filter 320ms ease, opacity 320ms ease;
+}
+
+.octopus-node--consultor-current {
+  filter: drop-shadow(0 0 12px var(--consultor-glow-inner, #ffd166))
+    drop-shadow(0 0 28px var(--consultor-glow-outer, rgba(255, 209, 102, 0.8)));
+  animation: consultor-glow-pulse 1.8s ease-in-out infinite;
+  opacity: 1;
+}
+
+.octopus-node--consultor-done {
+  filter: drop-shadow(0 0 3px var(--consultor-glow-inner, #ffd166));
+  opacity: 0.92;
+  animation: none;
+}
+
+.octopus-node--consultor-idle {
+  filter: grayscale(0.95) brightness(0.4) contrast(0.7);
+  opacity: 0.32;
+  animation: none;
+}
+
+@keyframes consultor-glow-pulse {
+  0%,
+  100% {
+    filter: drop-shadow(0 0 10px var(--consultor-glow-inner, #ffd166))
+      drop-shadow(0 0 22px var(--consultor-glow-outer, rgba(255, 209, 102, 0.7)));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px var(--consultor-glow-inner, #ffd166))
+      drop-shadow(0 0 40px var(--consultor-glow-outer, rgba(255, 209, 102, 0.95)));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .octopus-node--consultor-current {
+    animation: none;
+  }
+}
+
+/* Divider del panel derecho bloqueado en modo Consultor: el chat es
+   estático y no debe sugerir afford de resize. */
+.canvas-panel-divider--locked {
+  cursor: default;
+  opacity: 0.4;
+  pointer-events: none;
+}

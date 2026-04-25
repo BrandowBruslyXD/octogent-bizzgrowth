@@ -1,0 +1,46 @@
+# ─── Sistema operativo ─────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+*.swp
+*.swo
+
+# ─── Dependencias y build ──────────────────────────────────────────
+node_modules
+**/node_modules
+dist
+**/dist
+**/.vite
+**/coverage
+*.tsbuildinfo
+
+# ─── Estado local del usuario (no compartir entre máquinas) ────────
+# Octogent guarda en .octogent/ los tentáculos, transcripts, worktrees
+# y los archivos del flujo del consultor (interview, propuesta, etc.).
+# Cada operador genera el suyo, no se versiona.
+.octogent
+**/.octogent
+
+# ─── Configuración local del editor / agentes IA ───────────────────
+.claude/settings.local.json
+.claude/memory.db
+.claude-flow
+.codex
+.agents/data
+.swarm
+data/memory
+context
+
+# ─── Logs y temporales ─────────────────────────────────────────────
+*.log
+npm-debug.log*
+yarn-debug.log*
+pnpm-debug.log*
+
+# ─── Variables de entorno ──────────────────────────────────────────
+.env
+.env.local
+.env.*.local
+
+# ─── Playwright ────────────────────────────────────────────────────
+playwright-report
+test-results
